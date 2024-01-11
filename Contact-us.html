@@ -99,7 +99,7 @@
                                     <li class="dropdown-item"><a href="Contact-us.html">Contact Us</a></li>
                                 </ul>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link mest" data-toggle="modal"
                                     data-target="#exampleModalCenter">Estimate</a>
@@ -263,45 +263,13 @@
                         <h1>Drop Us A Message Now:</h1>
                     </div>
                     <div class="message-box">
-                        <form action="https://api.web3forms.com/submit" method="POST" class="cf" id="cf">
-                            
-                            <div class="row">
-                                <input type="hidden" name="access_key" value="30c8d6fb-0d56-4b83-b707-7fc08d68f376">
-                                <div class="form-group col-md-6">
-                                    <label>Your Name*</label>
-                                    <input type="text" class="form-control cbi-green" id="firstName" name="firstName"
-                                        placeholder="Your Name Here" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Email Address*</label>
-                                    <input type="email" id="email" name="email" class="form-control cbi-green"
-                                        placeholder="Email Address Here" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Subject Line</label>
-                                    <input type="text" class="form-control cbi-green" id="subjectName"
-                                        name="subjectName" placeholder="Subject Of Massage">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Telephone Number*</label>
-                                    <input type="text" id="phone" name="phone" class="form-control cbi-green"
-                                        placeholder="Phone Number" required>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label>Your Message</label>
-                                    <textarea rows="6" class="form-control cbi-green" id="msg" name="msg"
-                                        placeholder="Write Your Message"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <button type="submit" id="submit" name="submit" class="cf-btn btn btn-dark">Send
-                                            Now</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <div class="cf-msg"></div>
-                                </div>
-                            </div>
+                        <form class="new-form" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="30c8d6fb-0d56-4b83-b707-7fc08d68f376">
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                            <input type="email" name="email" id="email" placeholder="Your Email Address" required>
+                            <input type="text" name="phone" id="phone" placeholder="Phone Number" required>
+                            <textarea name="message" rows="4" placeholder="Write Your Message" required></textarea>
+                            <button type="submit">Send Now</button>
                         </form>
                     </div>
                 </div>
@@ -342,7 +310,8 @@
                                             aria-label="Recipient's username" aria-describedby="basic-addon4">
                                         <div class="input-group-append">
                                             <!-- <span class="input-group-text" id="basic-addon4">Subscribe</span> -->
-                                            <input type="submit" value="Subscribe" class="input-group-text" id="basic-addon4">
+                                            <input type="submit" value="Subscribe" class="input-group-text"
+                                                id="basic-addon4">
                                         </div>
                                     </div>
                                 </form>
@@ -356,7 +325,8 @@
                     <div class="col-md-4">
                         <div class="about-company">
                             <h4>About Company</h4>
-                            <p>In the realm where hues converge and textures unfold, a painter orchestrates a symphony of emotions, crafting
+                            <p>In the realm where hues converge and textures unfold, a painter orchestrates a symphony
+                                of emotions, crafting
                                 a visual narrative that transcends the boundaries of mere pigments.
                             </p>
                             <p>Brushstrokes dance, colors whisper stories on canvas.</p>
@@ -380,7 +350,8 @@
                             <h4>Follow Us:</h4>
                             <div class="social-icon">
                                 <ul class="sicon-frist">
-                                    <li><a href="https://www.instagram.com/phcr.afts?igsh=cHE4a20yMHgwN2N5&utm_source=qr" target="_blank">
+                                    <li><a href="https://www.instagram.com/phcr.afts?igsh=cHE4a20yMHgwN2N5&utm_source=qr"
+                                            target="_blank">
                                             <i class="fab fa-instagram sicon sicon-4"></i>
                                         </a>
                                     </li>
@@ -428,14 +399,31 @@
     <script>
         const scriptURL = ''
         const form = document.forms['submit-to-google-sheet']
-      
+
         form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => console.log('Success!', response))
-            .catch(error => console.error('Error!', error.message))
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
         })
-      </script>
+    </script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "username",
+                Password: "password",
+                To: 'them@website.com',
+                From: "you@isp.com",
+                Subject: "This is the subject",
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
 </body>
 
 
